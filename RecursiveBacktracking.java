@@ -4,10 +4,10 @@ COT 5405 */
 
 
 public class RecursiveBacktracking {
-    static int callcount = 0;
+    static int recurcallcount = 0;
     public static int knapsack(int[] weights, int[] values, int capacity, int index) {
         // Tracks the number of times the function is called for comparsion
-        callcount++;
+        recurcallcount++;
         // Base case: no more items or capacity is 0
         if (index == weights.length || capacity == 0) {
             return 0;
@@ -30,8 +30,9 @@ public class RecursiveBacktracking {
         int[] values = {3, 4, 5, 6};
         int capacity = 5;
         // Result of the problem 
-        int result = knapsack(weights, values, capacity, 0);
+        int recurresult = knapsack(weights, values, capacity, 0);
         // Prints result
-        System.out.println("Max value = " + result);
+        System.out.println("Max value = " + recurresult);
+        System.out.println("Recursive calls = " + recurcallcount);
     }
 }
