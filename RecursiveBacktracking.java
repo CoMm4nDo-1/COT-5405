@@ -24,7 +24,7 @@ public class RecursiveBacktracking {
         return Math.max(take, skip);
     }
 
-        // -------- Dynamic Programming --------
+    // Dynamic Programming
     static int tableAccesses = 0;
 
     public static int dpKnapsack(int[] weights, int[] values, int capacity) {
