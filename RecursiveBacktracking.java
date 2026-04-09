@@ -50,8 +50,8 @@ public class RecursiveBacktracking {
 
     public static void main(String[] args) {
         // Sample input
-        int[] weights = {2, 3, 4, 5};
-        int[] values = {3, 4, 5, 6};
+        int[] weights = {2,3,4,5,6,7,8,9,10,11};
+        int[] values  = {3,4,5,6,7,8,9,10,11,12};
         int capacity = 30;
         // Result of the problem 
         int recurresult = knapsack(weights, values, capacity, 0);
