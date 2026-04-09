@@ -24,15 +24,45 @@ public class RecursiveBacktracking {
         return Math.max(take, skip);
     }
 
+        // -------- Dynamic Programming --------
+    static int tableAccesses = 0;
+
+    public static int dpKnapsack(int[] weights, int[] values, int capacity) {
+        int n = weights.length;
+        int[][] dp = new int[n + 1][capacity + 1];
+
+        for (int i = 1; i <= n; i++) {
+            for (int w = 0; w <= capacity; w++) {
+                tableAccesses++;
+
+                if (weights[i - 1] > w) {
+                    dp[i][w] = dp[i - 1][w];
+                } else {
+                    int exclude = dp[i - 1][w];
+                    int include = values[i - 1] + dp[i - 1][w - weights[i - 1]];
+                    dp[i][w] = Math.max(exclude, include);
+                }
+            }
+        }
+
+        return dp[n][capacity];
+    }
+
     public static void main(String[] args) {
         // Sample input
         int[] weights = {2, 3, 4, 5};
         int[] values = {3, 4, 5, 6};
-        int capacity = 5;
+        int capacity = 30;
         // Result of the problem 
         int recurresult = knapsack(weights, values, capacity, 0);
-        // Prints result
+
+        // Prints result for recursive backtracking
         System.out.println("Max value = " + recurresult);
         System.out.println("Recursive calls = " + recurcallcount);
+
+        // DP result
+        int dpResult = dpKnapsack(weights, values, capacity);
+        System.out.println("DP Max value = " + dpResult);
+        System.out.println("Table accesses = " + tableAccesses);
     }
 }
