@@ -1,0 +1,26 @@
+# COT 5405 -- 0/1 Knapsack Experiment Results
+# Cameron Anderson and Carlos Torres
+# Each timing is the average of 5 trials (ms)
+
+# Experiment 1 - Vary n (fixed W=50)
+n,Backtracking_time,Backtracking_calls,DP_time,DP_tableAccesses
+5,0.0048,61,0.0101,255
+10,0.0034,942,0.0156,510
+15,0.0353,13153,0.0241,765
+20,0.1631,69616,0.0278,1020
+25,N/A,N/A,0.0389,1275
+
+# Experiment 2 - Vary W (fixed n=15)
+W,Backtracking_time,Backtracking_calls,DP_time,DP_tableAccesses
+10,0.0021,132,0.0044,165
+20,0.0009,700,0.0106,315
+30,0.0029,2478,0.0141,465
+40,0.0065,6351,0.0191,615
+50,0.0131,13153,0.0223,765
+60,0.0234,22738,0.0283,915
+70,0.0341,34017,0.0345,1065
+80,0.0448,45044,0.0362,1215
+90,0.0561,54070,0.0389,1365
+100,0.0548,60177,0.0463,1515
+
+# Experiments complete.
