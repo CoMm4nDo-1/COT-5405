@@ -23,4 +23,12 @@ W,Backtracking_time,Backtracking_calls,DP_time,DP_tableAccesses
 90,0.0561,54070,0.0389,1365
 100,0.0548,60177,0.0463,1515
 
+# Experiment 3 - Solution Comparison (Correctness)
+Test,Backtracking_value,DP_value
+1,136,136
+2,197,197
+3,174,174
+4,158,158
+5,297,297
+
 # Experiments complete.

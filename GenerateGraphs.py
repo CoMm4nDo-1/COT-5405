@@ -1,4 +1,10 @@
-import csv, matplotlib.pyplot as plt
+import csv
+import os
+import matplotlib.pyplot as plt
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+results_path = os.path.join(BASE_DIR, "results.csv")
 
 def parse_sections(path):
     sections = []
@@ -16,7 +22,7 @@ def parse_sections(path):
         sections.append(current)
     return [list(csv.DictReader(s)) for s in sections]
 
-exp1, exp2 = parse_sections("results.csv")
+exp1, exp2, exp3 = parse_sections(results_path)
 
 # Graph 1: n vs execution time
 bt_n    = [int(r["n"]) for r in exp1 if r["Backtracking_time"] != "N/A"]
@@ -33,7 +39,7 @@ plt.xlabel("Number of Items (n)")
 plt.ylabel("Execution Time (ms)")
 plt.legend()
 plt.tight_layout()
-plt.savefig("graph1.png")
+plt.savefig(os.path.join(BASE_DIR, "graph1.png"))
 
 # Graph 2: W vs execution time
 w_vals     = [int(r["W"]) for r in exp2]
@@ -49,6 +55,23 @@ plt.xlabel("Knapsack Capacity (W)")
 plt.ylabel("Execution Time (ms)")
 plt.legend()
 plt.tight_layout()
-plt.savefig("graph2.png")
+plt.savefig(os.path.join(BASE_DIR, "graph2.png"))
 
-print("Saved graph1.png, graph2.png")
+# Graph 3: Solution Comparison (values should match)
+tests = [int(r["Test"]) for r in exp3]
+bt_vals = [int(r["Backtracking"]) for r in exp3]
+dp_vals = [int(r["DP"]) for r in exp3]
+
+plt.figure()
+plt.plot(tests, bt_vals, "r-o", label="Recursive Backtracking")
+plt.plot(tests, dp_vals, "b--o", label="Dynamic Programming")
+
+plt.xticks(tests)
+plt.title("Solution Comparison (Correctness Check)")
+plt.xlabel("Test Number")
+plt.ylabel("Optimal Value")
+plt.legend()
+plt.tight_layout()
+plt.savefig(os.path.join(BASE_DIR, "graph3.png"))
+
+print("Saved graph1.png, graph2.png, graph3.png")
